@@ -16,19 +16,23 @@ class AppConfig
                 foreach (file($configFile) as $line) {
                     $line = trim($line);
                     if ($line && strpos($line, '=') !== false) {
-                        list($key, $value) = explode('=', $line, 2);
+                        [$key, $value] = explode('=', $line, 2);
                         $value = trim($value, " \t\n\r\0\x0B\";");
                         self::$config[trim($key)] = $value;
                     }
                 }
             }
+
+            return self::$config;
         }
+
         return self::$config;
     }
 
     public static function get($key, $default = null)
     {
         $config = self::load();
+
         return $config[$key] ?? $default;
     }
 }
