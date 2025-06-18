@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Bouncer\Scopes\DefaultScope;
+use App\Helpers\AppConfig;
 use App\Policies\CompanyPolicy;
 use App\Policies\CustomerPolicy;
 use App\Policies\DashboardPolicy;
@@ -20,7 +21,6 @@ use App\Policies\RolePolicy;
 use App\Policies\SettingsPolicy;
 use App\Policies\UserPolicy;
 use App\Space\InstallUtils;
-use App\Helpers\AppConfig;
 use Gate;
 use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\ServiceProvider;
