@@ -60,6 +60,8 @@ class AppServiceProvider extends ServiceProvider
         Gate::policy(Role::class, RolePolicy::class);
 
         View::addNamespace('pdf_templates', storage_path('app/templates/pdf'));
+        // Compartir toda la configuración con todas las vistas
+        View::share('appConfig', AppConfig::load());
 
         $this->bootAuth();
         $this->bootBroadcast();
