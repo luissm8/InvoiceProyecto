@@ -1,7 +1,7 @@
 @foreach($items as $item)
   @php
     $showItem = true;
-    if ($item->title === 'Facturas Recurrentes' && \App\Helpers\AppConfig::get('OPCION_MENU_FRA_RECURRENTE', '0') !== '1') {
+    if ($item->title === 'Facturas recurrentes' && \app\Helpers\AppConfig::get('OPCION_MENU_FRA_RECURRENTE', '0') !== '1') {
         $showItem = false;
     }
   @endphp
