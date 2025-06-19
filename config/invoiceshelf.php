@@ -11,6 +11,7 @@ use App\Models\Note;
 use App\Models\Payment;
 use App\Models\RecurringInvoice;
 use App\Models\TaxType;
+use App\Helpers\AppConfig;
 
 return [
 
@@ -291,7 +292,7 @@ return [
     /*
     * List of main menu
     */
-    'main_menu' => [
+    'main_menu' => array_values(array_filter([
         [
             'title' => 'navigation.dashboard',
             'group' => 1,
@@ -342,7 +343,7 @@ return [
             'ability' => 'view-invoice',
             'model' => Invoice::class,
         ],
-        [
+        AppConfig::get('OPCION_MENU_FRA_RECURRENTE', '1') === '1' ? [
             'title' => 'navigation.recurring-invoices',
             'group' => 2,
             'link' => '/admin/recurring-invoices',
@@ -351,7 +352,7 @@ return [
             'owner_only' => false,
             'ability' => 'view-recurring-invoice',
             'model' => RecurringInvoice::class,
-        ],
+        ] : null,
         [
             'title' => 'navigation.payments',
             'group' => 2,
@@ -412,7 +413,7 @@ return [
             'ability' => '',
             'model' => '',
         ],
-    ],
+    ])),
 
     /*
     * List of customer portal menu
