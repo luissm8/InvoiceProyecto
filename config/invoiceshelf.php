@@ -343,7 +343,7 @@ return [
             'ability' => 'view-invoice',
             'model' => Invoice::class,
         ],
-        AppConfig::get('OPCION_MENU_FRA_RECURRENTE', '1') === '1' ? [
+        AppConfig::get('OPCION_MENU_FRA_RECURRENTE', '0') === '1' ? [
             'title' => 'navigation.recurring-invoices',
             'group' => 2,
             'link' => '/admin/recurring-invoices',
