@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\AppConfig;
 use App\Models\Customer;
 use App\Models\CustomField;
 use App\Models\Estimate;
@@ -11,7 +12,6 @@ use App\Models\Note;
 use App\Models\Payment;
 use App\Models\RecurringInvoice;
 use App\Models\TaxType;
-use App\Helpers\AppConfig;
 
 return [
 
