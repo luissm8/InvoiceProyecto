@@ -145,3 +145,27 @@ Route::get('/forgot-password', function () {
 Route::get('/login', function () {
     return view('app');
 })->where('vue', '[\/\w\.-]*')->name('login')->middleware(['install', 'guest']);
+
+Route::get('/api/logo-url', function () {
+    $path = base_path('appConfig.cfg');
+
+    if (! file_exists($path)) {
+        return response()->json(['error' => 'Config no encontrada'], 404);
+    }
+
+    $lines = file($path);
+    $logoUrl = null;
+
+    foreach ($lines as $line) {
+        if (strpos($line, 'URL_LOGOTIPO=') === 0) {
+            $logoUrl = trim(explode('=', $line, 2)[1], " \n\r\t\"");
+            break;
+        }
+    }
+
+    if (! $logoUrl) {
+        return response()->json(['error' => 'URL_LOGOTIPO no encontrada'], 404);
+    }
+
+    return response()->json(['url' => $logoUrl]);
+});
