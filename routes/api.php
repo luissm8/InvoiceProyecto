@@ -539,7 +539,7 @@ Route::get('/cron', CronJobController::class)->middleware('cron-job');
 Route::get('/api/logo-url', function () {
     $path = base_path('appConfig.cfg');
 
-    if (!file_exists($path)) {
+    if (! file_exists($path)) {
         return response()->json(['error' => 'Config no encontrada'], 404);
     }
 
@@ -553,7 +553,7 @@ Route::get('/api/logo-url', function () {
         }
     }
 
-    if (!$logoUrl) {
+    if (! $logoUrl) {
         return response()->json(['error' => 'URL_LOGOTIPO no encontrada'], 404);
     }
 
